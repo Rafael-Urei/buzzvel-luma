@@ -1,7 +1,60 @@
+import { tv } from "tailwind-variants";
 import Button from "./components/button/button";
-import Header from "./components/header/header";
+
+type CardProps = {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export function Card({ card }: { card: CardProps }) {
+  const cardVariants = tv({
+    base: "border rounded-[16px] p-[28px] flex flex-col justify-start",
+    slots: {
+      title: "font-bold text-lg text-text-primary",
+      description: "text-tertiary text-sm tracking-normal pt-[12px]"
+    }
+  })
+
+  const { base, title, description} = cardVariants();
+  return (
+    <div className={base()}>
+      <div className="text-center rounded-md bg-primary-blue-light text-primary-blue font-semibold text-xs py-1 px-2 w-max flex items-center justify-center">
+        {card.id}
+      </div>
+      <span className={title()}>{card.title}</span>
+      <p className={description()}>{card.description}</p>
+      <div className="pt-6">
+          Explore (icon)
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
+  const cards = [
+    {
+      id: "01",
+      title: "Product Design",
+      description: "Turn complex problems into clear, useful experiences.",
+    },
+    {
+      id: "02",
+      title: "Technology",
+      description: "Build a stronger understanding of the tools shaping digital products.",
+    },
+    {
+      id: "03",
+      title: "Business",
+      description: "Develop practical skills for better decisions and stronger teams.",
+    },
+    {
+      id: "04",
+      title: "Creative",
+      description: "Explore new ways to communicate, create and tell stories.",
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-white">
       <section id="courses" className="py-25 px-20 bg-background-light-yellow flex items-center">
@@ -26,6 +79,18 @@ export default function Home() {
         </div>
         <div>
           <img src="./woman.png" alt=""></img>
+        </div>
+      </section>
+      <section className="py-25 px-20">
+        <span className="text-primary-blue text-xs font-semibold uppercase tracking-[1.44px] leading-4">Find your next skill</span>
+        <h2 className="font-extrabold text-[48px] leading-17.5 tracking-[-1.6px] pt-4">
+          Learn something worth knowing.
+        </h2>
+        <p className="text-lg text-text-secondary leading-7 tracking-normal pt-6">Short, practical courses designed around skills you can put to work immediately.</p>
+        <div className="grid grid-cols-4 gap-4">
+          {cards.map((card) => (
+            <Card key={card.id} card={card}></Card>
+          ))}
         </div>
       </section>
     </div>
