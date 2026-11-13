@@ -1,10 +1,75 @@
 import { tv } from "tailwind-variants";
 import Button from "./components/button/button";
+import ContactUsForm from "./components/forms/contact-us";
 
 type CardProps = {
   id: string;
   title: string;
   description: string;
+}
+
+import { ReactNode } from "react"
+
+interface ContactInfo {
+  label: string
+  value: string
+  href?: string
+  icon?: ReactNode
+}
+
+const contactInfo: ContactInfo[] = [
+  {
+    label: "Email",
+    value: "contact@luma.com",
+    href: "mailto:contact@luma.com",
+  },
+  {
+    label: "Response Time",
+    value: "Up to 24 hours on business days",
+  },
+]
+
+export function ContactIntro() {
+  return (
+    <section className="max-w-120">
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary-blue">
+        Contact
+      </p>
+      <h1 className="mt-4 text-5xl font-extrabold tracking-tight text-text-primary">
+        Get in touch
+      </h1>
+      <p className="mt-4 text-lg leading-7 text-text-secondary">
+        Have a question? We’re here to help. Whether you’re looking for the right course, learning with your team or interested in teaching with Luma, we’d love to hear from you.
+      </p>
+
+      <ul className="mt-10 space-y-4">
+        {contactInfo.map((item) => (
+          <li
+            key={item.label}
+            className="flex items-center gap-4 rounded-2xl bg-stone-50 p-5"
+          >
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary-blue-light text-primary-blue">
+              {item.icon}
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <span className="text-sm text-text-primary">{item.label}</span>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  className="text-sm text-primary-blue hover:underline"
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <span className="text-sm text-slate-500">{item.value}</span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
 }
 
 export function Card({ card }: { card: CardProps }) {
@@ -117,10 +182,9 @@ export default function Home() {
           </h2>
       </section>
 
-      <section className="py-25 px-20 bg-transparent flex items-start gap-8">
-          <span className="text-white text-xs font-semibold uppercase tracking-[1.44px] leading-4">The lessons are short enough to fit into my week, but detailed enough that I actually leave with something I can use.</span>
-          <p className="text-lg text-white leading-7 tracking-normal pt-6">Learn how to turn complex workflows into simple, intentional product experiences through research, structure and thoughtful interaction design.</p>
-          <p className="text-lg text-white leading-7 tracking-normal pt-6">with Maya Chen · Senior Product Designer</p>
+      <section className="flex items-center justify-between py-25 px-20">
+        <ContactIntro></ContactIntro>
+        <ContactUsForm></ContactUsForm>
       </section>
     </div>
   );
