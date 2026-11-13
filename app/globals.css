@@ -3,11 +3,35 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text-primary: #171B2C;
+  --text-secondary: #656770;
+  --text-white-secondary: #E7E7EC;
+  --text-white-tertiary: #9E9FAA;
+  --primary-blue: #3157F6;
+  --primary-blue-light: #E2E8FF;
+  --primary-orange: #FF704D;
+  --secondary-yellow: #FFEE7E;
+  --background-yellow: #FFF1C2;
+  --background-light-yellow: #F9F8F3;
+  --background-darkblue: #171B2C;
+  --button-radius: 8px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-blue-light: var(--primary-blue-light);
+  --color-primary-orange: var(--primary-orange);
+  --color-secondary-yellow: var(--secondary-yellow);
+  --color-background-yellow: var(--background-yellow);
+  --color-background-light-yellow: var(--background-light-yellow);
+  --color-background-darkblue: var(--background-darkblue);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-white-secondary: var(--text-white-secondary);
+  --color-text-white-tertiary: var(--text-white-tertiary);
+  --rounded-button-radius: var(--button-radius);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
