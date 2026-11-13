@@ -57,6 +57,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+
       <section id="courses" className="py-25 px-20 bg-background-light-yellow flex items-center">
         <div>
           <span className="text-primary-blue text-xs font-semibold uppercase tracking-[1.44px] leading-4">Learn at your own pace</span>
@@ -81,17 +82,45 @@ export default function Home() {
           <img src="./woman.png" alt=""></img>
         </div>
       </section>
+
       <section className="py-25 px-20">
         <span className="text-primary-blue text-xs font-semibold uppercase tracking-[1.44px] leading-4">Find your next skill</span>
         <h2 className="font-extrabold text-[48px] leading-17.5 tracking-[-1.6px] pt-4">
           Learn something worth knowing.
         </h2>
         <p className="text-lg text-text-secondary leading-7 tracking-normal pt-6">Short, practical courses designed around skills you can put to work immediately.</p>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 pt-10">
           {cards.map((card) => (
             <Card key={card.id} card={card}></Card>
           ))}
         </div>
+      </section>
+
+      <section className="py-25 px-20 bg-primary-blue flex items-start gap-8">
+        <div>
+          <img src="./featured-course.png" alt=""></img>
+        </div>
+        <div>
+          <span className="text-white text-xs font-semibold uppercase tracking-[1.44px] leading-4">Most popular this month</span>
+          <h2 className="font-extrabold text-white text-[48px] leading-17.5 tracking-[-1.6px] pt-4">
+            Designing products people understand.
+          </h2>
+          <p className="text-lg text-white leading-7 tracking-normal pt-6">Learn how to turn complex workflows into simple, intentional product experiences through research, structure and thoughtful interaction design.</p>
+          <p className="text-lg text-white leading-7 tracking-normal pt-6">with Maya Chen · Senior Product Designer</p>
+        </div>
+      </section>
+
+      <section className="py-25 px-20 bg-background-light-yellow text-center">
+          <span className="text-primary-blue text-center text-xs font-semibold uppercase tracking-[1.44px] leading-4">How Luma works</span>
+          <h2 className="font-extrabold text-center text-[48px] leading-17.5 tracking-[-1.6px] pt-4">
+            Less browsing. More learning.
+          </h2>
+      </section>
+
+      <section className="py-25 px-20 bg-transparent flex items-start gap-8">
+          <span className="text-white text-xs font-semibold uppercase tracking-[1.44px] leading-4">The lessons are short enough to fit into my week, but detailed enough that I actually leave with something I can use.</span>
+          <p className="text-lg text-white leading-7 tracking-normal pt-6">Learn how to turn complex workflows into simple, intentional product experiences through research, structure and thoughtful interaction design.</p>
+          <p className="text-lg text-white leading-7 tracking-normal pt-6">with Maya Chen · Senior Product Designer</p>
       </section>
     </div>
   );
