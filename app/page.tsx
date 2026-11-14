@@ -64,7 +64,7 @@ function CourseCard({ card }: { card: Course }) {
           {card.id}
         </div>
       </div>
-      <span className={title()}>{card.title}</span>
+      <h3 className={title()}>{card.title}</h3>
       <p className={description()}>{card.description}</p>
       <div className="inline-flex items-center gap-2 justify-self-end pt-6 text-sm leading-6 font-bold tracking-normal">
         Explore
@@ -96,7 +96,7 @@ function Hero() {
           <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
             Learn at your own pace
           </span>
-          <h1 className="pt-4 text-[65px] leading-17.5 font-extrabold tracking-[-1.6px]">
+          <h1 className="font-jakarta pt-4 text-[65px] leading-17.5 font-extrabold tracking-[-1.6px]">
             Build skills that actually move you forward.
           </h1>
           <p className="text-text-secondary pt-6 text-lg leading-7 tracking-normal">
@@ -156,7 +156,7 @@ function Courses() {
       <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
         Find your next skill
       </span>
-      <h2 className="text-text-primary max-w-140 pt-4 text-[48px] leading-14 font-extrabold tracking-[-1.2px]">
+      <h2 className="text-text-primary font-jakarta max-w-140 pt-4 text-[48px] leading-14 font-extrabold tracking-[-1.2px]">
         Learn something worth knowing.
       </h2>
       <p className="text-text-secondary max-w-140 pt-6 text-lg leading-7 tracking-normal">
@@ -303,9 +303,9 @@ function TestimonialStats() {
           </span>
 
           <blockquote className="mt-2">
-            <p className="text-text-primary max-w-150 text-3xl leading-11 font-semibold tracking-[-0.75px]">
+            <h4 className="text-text-primary max-w-150 text-3xl leading-11 font-semibold tracking-[-0.75px]">
               {testimonial.quote}
-            </p>
+            </h4>
           </blockquote>
 
           <figcaption className="mt-8 flex items-center gap-4">
@@ -333,7 +333,7 @@ function TestimonialStats() {
               <dt className="text-text-tertiary mt-2 text-sm leading-6 tracking-normal">
                 {stat.label}
               </dt>
-              <dd className="text-primary-blue text-[64px] leading-17.5 font-extrabold tracking-[-1.6px]">
+              <dd className="text-primary-blue font-jakarta text-[64px] leading-17.5 font-extrabold tracking-[-1.6px]">
                 {stat.value}
               </dd>
             </div>
@@ -447,12 +447,14 @@ function PeopleSection() {
     <Section background="yellow">
       <div className="flex items-center gap-x-15">
         <div className="flex max-w-132.5 flex-col gap-8">
-          <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
-            The people
-          </p>
-          <h2 className="text-text-primary text-5xl leading-14 font-extrabold tracking-[-1.2px]">
-            Meet international students &amp; teachers
-          </h2>
+          <div>
+            <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
+              The people
+            </p>
+            <h2 className="text-text-primary text-5xl leading-14 font-extrabold tracking-[-1.2px]">
+              Meet international students &amp; teachers
+            </h2>
+          </div>
           <p className="text-text-secondary text-lg leading-7">
             Morbi sit egestas dignissim pharetra, sed amet. Tempus justo
             senectus risus ac vel, velit, nunc. Eget commodo eget in aliquam

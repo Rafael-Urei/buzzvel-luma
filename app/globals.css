@@ -34,8 +34,8 @@
   --color-text-white-secondary: var(--text-white-secondary);
   --color-text-white-tertiary: var(--text-white-tertiary);
   --color-card-border: var(--card-border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-jakarta: var(--font-plus-jakarta-sans);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,4 +49,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-jakarta;
 }
