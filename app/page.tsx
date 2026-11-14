@@ -91,7 +91,7 @@ function CourseCard({ card }: { card: Course }) {
 function Hero() {
   return (
     <Section background="yellow">
-      <div className="flex items-center">
+      <div className="flex flex-col-reverse items-center gap-y-8 sm:flex-row">
         <div className="max-w-140">
           <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
             Learn at your own pace
@@ -104,14 +104,24 @@ function Hero() {
             design, technology, business and more — one focused lesson at a
             time.
           </p>
-          <div className="inline-flex gap-4 pt-8">
-            <Button className="px-7 py-3.5">Explore courses</Button>
-            <Button variant="outline" className="px-7 py-3.5">
+          <div className="flex flex-col gap-4 pt-8 sm:flex-row">
+            <Button className="justify-center px-7 py-3.5 text-center">
+              Explore courses
+            </Button>
+            <Button
+              variant="outline"
+              className="justify-center px-7 py-3.5 text-center"
+            >
               See how it works
             </Button>
           </div>
-          <div className="flex items-center gap-2 pt-8">
-            <img src="/three-avatars.png" alt="" />
+          <div className="flex items-center justify-center gap-2 pt-8 sm:justify-start">
+            <Image
+              src="/three-avatars.png"
+              width={80}
+              height={32}
+              alt=""
+            ></Image>
             <p className="text-sm">
               <strong>Trusted by 24,000+</strong> learners
             </p>
@@ -163,7 +173,7 @@ function Courses() {
         Short, practical courses designed around skills you can put to work
         immediately.
       </p>
-      <div className="grid grid-cols-4 gap-4 pt-10">
+      <div className="grid grid-cols-1 gap-4 pt-10 sm:grid-cols-4 md:grid-cols-2">
         {courses.map((course) => (
           <CourseCard key={course.id} card={course} />
         ))}
@@ -175,7 +185,7 @@ function Courses() {
 function FeaturedCourse() {
   return (
     <Section background="blue">
-      <div className="flex items-center gap-15">
+      <div className="flex flex-col items-center gap-15 sm:flex-row">
         <div>
           <Image
             src="/featured-course.png"
@@ -204,8 +214,11 @@ function FeaturedCourse() {
             <Button variant="badge">2h 40min</Button>
             <Button variant="badge">Intermediate</Button>
           </div>
-          <div className="flex items-center gap-3 pt-8">
-            <Button variant="secondary" className="px-7 py-3.5">
+          <div className="flex flex-col items-center gap-3 pt-8 sm:flex-row">
+            <Button
+              variant="secondary"
+              className="w-full justify-center px-7 py-3.5 text-center sm:w-max"
+            >
               View course
             </Button>
             <Link
@@ -293,7 +306,7 @@ const stats = [
 function TestimonialStats() {
   return (
     <Section>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-center justify-between sm:flex-row">
         <figure>
           <span
             aria-hidden
@@ -327,7 +340,7 @@ function TestimonialStats() {
           </figcaption>
         </figure>
 
-        <dl className="border-primary-blue-light flex w-100 flex-col gap-4 border-t pt-12 md:border-t-0 md:border-l md:pt-0 md:pl-12">
+        <dl className="border-primary-blue-light flex w-100 flex-row gap-4 pt-12 sm:flex-col md:border-t-0 md:border-l md:pt-0 md:pl-12">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse">
               <dt className="text-text-tertiary mt-2 text-sm leading-6 tracking-normal">
@@ -445,7 +458,7 @@ function PeopleCollage() {
 function PeopleSection() {
   return (
     <Section background="yellow">
-      <div className="flex items-center gap-x-15">
+      <div className="flex flex-col items-center gap-x-15 sm:flex-row">
         <div className="flex max-w-132.5 flex-col gap-8">
           <div>
             <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
@@ -582,10 +595,12 @@ function CtaSection() {
           Start with one course. Build from there.
         </p>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-10 flex w-full flex-col gap-3 sm:flex-row">
           <Link
             href="#"
-            className={buttonVariants({ className: "px-7 py-3.5" })}
+            className={buttonVariants({
+              className: "w-full justify-center px-7 py-3.5 sm:max-w-max",
+            })}
           >
             Explore all courses
           </Link>
@@ -593,7 +608,7 @@ function CtaSection() {
             href="#"
             className={buttonVariants({
               variant: "outline",
-              className: "px-7 py-3.5",
+              className: "w-full justify-center px-7 py-3.5 sm:max-w-max",
             })}
           >
             Join Luma
@@ -671,7 +686,7 @@ function ContactIntro() {
 function ContactSection() {
   return (
     <Section>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-center justify-between gap-8 sm:flex-row sm:gap-0">
         <ContactIntro />
         <ContactUsForm />
       </div>
