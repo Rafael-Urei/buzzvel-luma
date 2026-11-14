@@ -3,18 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --text-primary: #171B2C;
+  --text-primary: #171b2c;
   --text-secondary: #656770;
-  --text-white-secondary: #E7E7EC;
-  --text-white-tertiary: #9E9FAA;
-  --primary-blue: #3157F6;
-  --primary-blue-light: #E2E8FF;
-  --primary-orange: #FF704D;
-  --secondary-yellow: #FFEE7E;
-  --background-yellow: #FFF1C2;
-  --background-light-yellow: #F9F8F3;
-  --background-darkblue: #171B2C;
-  --button-radius: 8px;
+  --text-white-secondary: #e7e7ec;
+  --text-white-tertiary: #9e9faa;
+  --primary-blue: #3157f6;
+  --primary-blue-light: #e2e8ff;
+  --primary-orange: #ff704d;
+  --secondary-yellow: #ffee7e;
+  --background-yellow: #fff1c2;
+  --background-light-yellow: #f9f8f3;
+  --background-darkblue: #171b2c;
 }
 
 @theme inline {
@@ -31,7 +30,6 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-white-secondary: var(--text-white-secondary);
   --color-text-white-tertiary: var(--text-white-tertiary);
-  --rounded-button-radius: var(--button-radius);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

@@ -48,7 +48,7 @@ export function Footer() {
 
           {linkGroups.map((group) => (
             <nav key={group.title} aria-label={group.title}>
-              <h3 className="text-xs font-medium uppercase tracking-widest text-slate-200">
+              <h3 className="text-xs font-medium tracking-widest text-slate-200 uppercase">
                 {group.title}
               </h3>
               <ul className="mt-5 space-y-3.5">
@@ -68,9 +68,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 border-t border-slate-700 py-8">
-          <p className="text-sm text-slate-300">
-            &copy; 2026 Luma Learning
-          </p>
+          <p className="text-sm text-slate-300">&copy; 2026 Luma Learning</p>
         </div>
       </div>
     </footer>
