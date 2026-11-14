@@ -34,13 +34,13 @@ function StepperItem({
 
       <div className="relative z-10 w-fit">{icon}</div>
 
-      <p className="mt-6 text-sm font-medium tracking-widest text-slate-500 uppercase">
+      <p className="text-text-tertiary mt-6 text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
         {label}
       </p>
-      <h3 className="mt-3 text-xl font-semibold tracking-tight text-slate-900">
+      <h3 className="mt-3 text-xl leading-8 font-bold tracking-normal text-slate-900">
         {title}
       </h3>
-      <p className="mt-4 max-w-xs text-base leading-7 text-slate-500">
+      <p className="text-text-secondary mt-4 max-w-xs text-base leading-7">
         {description}
       </p>
 

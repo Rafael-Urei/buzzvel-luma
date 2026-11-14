@@ -7,6 +7,7 @@
   --text-secondary: #656770;
   --text-white-secondary: #e7e7ec;
   --text-white-tertiary: #9e9faa;
+  --text-tertiaty: #6d7384;
   --primary-blue: #3157f6;
   --primary-blue-light: #e2e8ff;
   --primary-orange: #ff704d;
@@ -29,6 +30,7 @@
   --color-background-darkblue: var(--background-darkblue);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
   --color-text-white-secondary: var(--text-white-secondary);
   --color-text-white-tertiary: var(--text-white-tertiary);
   --color-card-border: var(--card-border);

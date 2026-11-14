@@ -2,7 +2,7 @@ import { ComponentProps, ReactNode } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { tv, VariantProps } from "tailwind-variants"
-import Button from "./components/button/button"
+import Button, { buttonVariants } from "./components/button/button"
 import ContactUsForm from "./components/forms/contact-us"
 import { Stepper, StepperStep, StepShape } from "./components/stepper/stepper"
 
@@ -39,67 +39,6 @@ function Section({ background, className, children, ...props }: SectionProps) {
   )
 }
 
-const sectionHeaderStyles = tv({
-  slots: {
-    base: "flex flex-col",
-    eyebrow: "text-xs leading-4 font-semibold tracking-[1.44px] uppercase",
-    title: "pt-4 font-extrabold tracking-[-1.6px]",
-    description: "pt-6 text-lg leading-7 tracking-normal",
-  },
-  variants: {
-    align: {
-      left: "",
-      center: { base: "items-center text-center" },
-    },
-    size: {
-      md: { title: "text-[48px] leading-17.5" },
-      lg: { title: "text-4xl md:text-6xl" },
-    },
-    tone: {
-      default: {
-        eyebrow: "text-primary-blue",
-        title: "text-text-primary",
-        description: "text-text-secondary",
-      },
-      inverted: {
-        eyebrow: "text-white",
-        title: "text-white",
-        description: "text-white",
-      },
-    },
-  },
-  defaultVariants: {
-    align: "left",
-    size: "md",
-    tone: "default",
-  },
-})
-
-interface SectionHeaderProps extends VariantProps<typeof sectionHeaderStyles> {
-  eyebrow: string
-  title: string
-  description?: string
-}
-
-function SectionHeader({
-  eyebrow,
-  title,
-  description,
-  align,
-  size,
-  tone,
-}: SectionHeaderProps) {
-  const styles = sectionHeaderStyles({ align, size, tone })
-
-  return (
-    <div className={styles.base()}>
-      <span className={styles.eyebrow()}>{eyebrow}</span>
-      <h2 className={styles.title()}>{title}</h2>
-      {description && <p className={styles.description()}>{description}</p>}
-    </div>
-  )
-}
-
 interface Course {
   id: string
   title: string
@@ -109,8 +48,9 @@ interface Course {
 const courseCardStyles = tv({
   base: "flex flex-col justify-start rounded-2xl border border-card-border p-[28px]",
   slots: {
-    title: "text-text-primary text-lg font-bold",
-    description: "text-tertiary pt-[12px] text-sm tracking-normal",
+    title: "text-text-primary leading-[32px] text-xl font-bold ",
+    description:
+      "text-text-tertiary pt-[12px] flex-1 leading-[24px] text-sm tracking-normal",
   },
 })
 
@@ -119,12 +59,31 @@ function CourseCard({ card }: { card: Course }) {
 
   return (
     <div className={base()}>
-      <div className="bg-primary-blue-light text-primary-blue flex w-max items-center justify-center rounded-md px-2 py-1 text-center text-xs font-semibold">
-        {card.id}
+      <div className="h-[46.5px]">
+        <div className="bg-primary-blue-light text-primary-blue flex w-max items-center justify-center rounded-md px-2 py-1 text-center text-xs leading-4 font-semibold tracking-[1.44px]">
+          {card.id}
+        </div>
       </div>
       <span className={title()}>{card.title}</span>
       <p className={description()}>{card.description}</p>
-      <div className="pt-6">Explore (icon)</div>
+      <div className="inline-flex items-center gap-2 justify-self-end pt-6 text-sm leading-6 font-bold tracking-normal">
+        Explore
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 10H16M11 15L16 10L11 5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke="#171B2C"
+          />
+        </svg>
+      </div>
     </div>
   )
 }
@@ -133,7 +92,7 @@ function Hero() {
   return (
     <Section background="yellow">
       <div className="flex items-center">
-        <div>
+        <div className="max-w-140">
           <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
             Learn at your own pace
           </span>
@@ -159,7 +118,7 @@ function Hero() {
           </div>
         </div>
         <div>
-          <img src="/woman.png" alt="" />
+          <Image src="/woman.png" width={500} height={520} alt=""></Image>
         </div>
       </div>
     </Section>
@@ -194,11 +153,16 @@ const courses: Course[] = [
 function Courses() {
   return (
     <Section id="courses">
-      <SectionHeader
-        eyebrow="Find your next skill"
-        title="Learn something worth knowing."
-        description="Short, practical courses designed around skills you can put to work immediately."
-      />
+      <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
+        Find your next skill
+      </span>
+      <h2 className="text-text-primary max-w-140 pt-4 text-[48px] leading-14 font-extrabold tracking-[-1.2px]">
+        Learn something worth knowing.
+      </h2>
+      <p className="text-text-secondary max-w-140 pt-6 text-lg leading-7 tracking-normal">
+        Short, practical courses designed around skills you can put to work
+        immediately.
+      </p>
       <div className="grid grid-cols-4 gap-4 pt-10">
         {courses.map((course) => (
           <CourseCard key={course.id} card={course} />
@@ -211,20 +175,61 @@ function Courses() {
 function FeaturedCourse() {
   return (
     <Section background="blue">
-      <div className="flex items-start gap-8">
+      <div className="flex items-center gap-15">
         <div>
-          <img src="/featured-course.png" alt="" />
+          <Image
+            src="/featured-course.png"
+            width={540}
+            height={410}
+            alt=""
+          ></Image>
         </div>
-        <div>
-          <SectionHeader
-            tone="inverted"
-            eyebrow="Most popular this month"
-            title="Designing products people understand."
-            description="Learn how to turn complex workflows into simple, intentional product experiences through research, structure and thoughtful interaction design."
-          />
-          <p className="pt-6 text-lg leading-7 tracking-normal text-white">
+        <div className="max-w-135">
+          <span className="text-xs leading-4 font-semibold tracking-[1.44px] text-white uppercase">
+            Most popular this month
+          </span>
+          <h2 className="pt-4 text-[48px] leading-14 font-extrabold tracking-[-1.6px] text-white">
+            Designing products people understand.
+          </h2>
+          <p className="pt-6 leading-7 tracking-normal text-white">
+            Learn how to turn complex workflows into simple, intentional product
+            experiences through research, structure and thoughtful interaction
+            design.
+          </p>
+          <p className="pt-6 leading-7 tracking-normal text-white">
             with Maya Chen · Senior Product Designer
           </p>
+          <div className="flex items-center gap-3 pt-6">
+            <Button variant="badge">8 lessons</Button>
+            <Button variant="badge">2h 40min</Button>
+            <Button variant="badge">Intermediate</Button>
+          </div>
+          <div className="flex items-center gap-3 pt-8">
+            <Button variant="secondary" className="px-7 py-3.5">
+              View course
+            </Button>
+            <Link
+              href="#"
+              className="text-text-white-secondary flex items-center gap-2 text-sm leading-6 font-bold tracking-normal"
+            >
+              Browse all courses
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 10H16M11 15L16 10L11 5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke="white"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </Section>
@@ -255,12 +260,15 @@ const steps: StepperStep[] = [
 function HowItWorks() {
   return (
     <Section background="yellow">
-      <SectionHeader
-        align="center"
-        size="lg"
-        eyebrow="How Luma works"
-        title="Less browsing. More learning."
-      />
+      <div className="text-center">
+        <p className="text-primary-blue text-xs leading-4 font-medium font-semibold tracking-[1.44px] uppercase">
+          How Luma works
+        </p>
+        <h2 className="text-text-primary mt-4 text-5xl leading-14 font-extrabold tracking-[-1.2px]">
+          Less browsing. More learning.
+        </h2>
+      </div>
+
       <div className="mt-20">
         <Stepper steps={steps} />
       </div>
@@ -285,7 +293,7 @@ const stats = [
 function TestimonialStats() {
   return (
     <Section>
-      <div className="grid items-center gap-12 md:grid-cols-[1fr_auto] md:gap-16">
+      <div className="flex items-center justify-between">
         <figure>
           <span
             aria-hidden
@@ -294,8 +302,8 @@ function TestimonialStats() {
             &quot;
           </span>
 
-          <blockquote className="mt-2 max-w-xl">
-            <p className="text-text-primary text-3xl leading-snug font-medium tracking-tight">
+          <blockquote className="mt-2">
+            <p className="text-text-primary max-w-150 text-3xl leading-11 font-semibold tracking-[-0.75px]">
               {testimonial.quote}
             </p>
           </blockquote>
@@ -309,19 +317,23 @@ function TestimonialStats() {
               className="size-12 rounded-full object-cover"
             />
             <div>
-              <p className="text-text-primary text-base font-semibold">
+              <p className="text-text-primary text-base leading-7 font-semibold">
                 {testimonial.author}
               </p>
-              <p className="text-sm text-slate-500">{testimonial.role}</p>
+              <p className="text-text-secondary text-sm leading-6">
+                {testimonial.role}
+              </p>
             </div>
           </figcaption>
         </figure>
 
-        <dl className="border-primary-blue-light flex flex-col gap-4 border-t pt-12 md:border-t-0 md:border-l md:pt-0 md:pl-12">
+        <dl className="border-primary-blue-light flex w-100 flex-col gap-4 border-t pt-12 md:border-t-0 md:border-l md:pt-0 md:pl-12">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse">
-              <dt className="mt-2 text-base text-slate-500">{stat.label}</dt>
-              <dd className="text-primary-blue text-6xl leading-none font-bold tracking-tight">
+              <dt className="text-text-tertiary mt-2 text-sm leading-6 tracking-normal">
+                {stat.label}
+              </dt>
+              <dd className="text-primary-blue text-[64px] leading-17.5 font-extrabold tracking-[-1.6px]">
                 {stat.value}
               </dd>
             </div>
@@ -332,160 +344,128 @@ function TestimonialStats() {
   )
 }
 
-const PEOPLE_CANVAS = { width: 520, height: 497 }
+// const PEOPLE_CANVAS = { width: 520, height: 497 }
 
-interface Tile {
-  src: string
-  alt: string
-  x: number
-  y: number
-  w: number
-  h: number
-}
+// interface Tile {
+//   src: string
+//   alt: string
+//   x: number
+//   y: number
+//   w: number
+//   h: number
+// }
 
-const tiles: Tile[] = [
-  {
-    src: "/people/01.jpg",
-    alt: "Student raising her hand at a desk",
-    x: 35,
-    y: 80,
-    w: 103,
-    h: 154,
-  },
-  {
-    src: "/people/02.jpg",
-    alt: "Group of students studying together",
-    x: 0,
-    y: 247,
-    w: 138,
-    h: 207,
-  },
-  {
-    src: "/people/03.jpg",
-    alt: "Student reading a book",
-    x: 154,
-    y: 0,
-    w: 103,
-    h: 170,
-  },
-  {
-    src: "/people/04.jpg",
-    alt: "Two students practicing music by a window",
-    x: 154,
-    y: 183,
-    w: 103,
-    h: 172,
-  },
-  {
-    src: "/people/05.jpg",
-    alt: "Student reading at his desk",
-    x: 154,
-    y: 368,
-    w: 103,
-    h: 128,
-  },
-  {
-    src: "/people/06.jpg",
-    alt: "Graduate holding a diploma",
-    x: 272,
-    y: 8,
-    w: 103,
-    h: 138,
-  },
-  {
-    src: "/people/07.jpg",
-    alt: "Student working on a laptop at home",
-    x: 272,
-    y: 158,
-    w: 103,
-    h: 138,
-  },
-  {
-    src: "/people/08.jpg",
-    alt: "Teacher on a video call",
-    x: 272,
-    y: 309,
-    w: 103,
-    h: 154,
-  },
-  {
-    src: "/people/09.jpg",
-    alt: "Student holding folders outdoors",
-    x: 392,
-    y: 60,
-    w: 128,
-    h: 205,
-  },
-  {
-    src: "/people/10.jpg",
-    alt: "Student with a coffee and a backpack",
-    x: 392,
-    y: 278,
-    w: 103,
-    h: 132,
-  },
-]
+// const tiles: Tile[] = [
+//   {
+//     src: "/people/01.jpg",
+//     alt: "Student raising her hand at a desk",
+//     x: 35,
+//     y: 80,
+//     w: 103,
+//     h: 154,
+//   },
+//   {
+//     src: "/people/02.jpg",
+//     alt: "Group of students studying together",
+//     x: 0,
+//     y: 247,
+//     w: 138,
+//     h: 207,
+//   },
+//   {
+//     src: "/people/03.jpg",
+//     alt: "Student reading a book",
+//     x: 154,
+//     y: 0,
+//     w: 103,
+//     h: 170,
+//   },
+//   {
+//     src: "/people/04.jpg",
+//     alt: "Two students practicing music by a window",
+//     x: 154,
+//     y: 183,
+//     w: 103,
+//     h: 172,
+//   },
+//   {
+//     src: "/people/05.jpg",
+//     alt: "Student reading at his desk",
+//     x: 154,
+//     y: 368,
+//     w: 103,
+//     h: 128,
+//   },
+//   {
+//     src: "/people/06.jpg",
+//     alt: "Graduate holding a diploma",
+//     x: 272,
+//     y: 8,
+//     w: 103,
+//     h: 138,
+//   },
+//   {
+//     src: "/people/07.jpg",
+//     alt: "Student working on a laptop at home",
+//     x: 272,
+//     y: 158,
+//     w: 103,
+//     h: 138,
+//   },
+//   {
+//     src: "/people/08.jpg",
+//     alt: "Teacher on a video call",
+//     x: 272,
+//     y: 309,
+//     w: 103,
+//     h: 154,
+//   },
+//   {
+//     src: "/people/09.jpg",
+//     alt: "Student holding folders outdoors",
+//     x: 392,
+//     y: 60,
+//     w: 128,
+//     h: 205,
+//   },
+//   {
+//     src: "/people/10.jpg",
+//     alt: "Student with a coffee and a backpack",
+//     x: 392,
+//     y: 278,
+//     w: 103,
+//     h: 132,
+//   },
+// ]
 
 function PeopleCollage() {
-  return (
-    <div
-      className="relative mx-auto aspect-520/497 w-full max-w-130 lg:mx-0"
-      aria-label="Photos of international students and teachers"
-    >
-      <div
-        aria-hidden
-        className="bg-primary-blue-light absolute top-[-2.9%] left-[2.9%] aspect-square w-[96.2%] rounded-full"
-      />
-
-      {tiles.map((tile) => (
-        <div
-          key={tile.src}
-          className="absolute overflow-hidden rounded-lg shadow-md"
-          style={{
-            left: pct(tile.x, PEOPLE_CANVAS.width),
-            top: pct(tile.y, PEOPLE_CANVAS.height),
-            width: pct(tile.w, PEOPLE_CANVAS.width),
-            height: pct(tile.h, PEOPLE_CANVAS.height),
-          }}
-        >
-          <Image
-            src={tile.src}
-            alt={tile.alt}
-            fill
-            sizes="(min-width: 1024px) 140px, 30vw"
-            className="object-cover"
-          />
-        </div>
-      ))}
-    </div>
-  )
+  return <Image src="/students.png" alt="" width={530} height={525}></Image>
 }
 
 function PeopleSection() {
   return (
     <Section background="yellow">
-      <div className="grid items-center gap-16 lg:grid-cols-[1fr_520px]">
-        <div>
-          <p className="text-primary-blue text-sm font-medium tracking-widest uppercase">
+      <div className="flex items-center gap-x-15">
+        <div className="flex max-w-132.5 flex-col gap-8">
+          <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
             The people
           </p>
-          <h2 className="text-text-primary mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="text-text-primary text-5xl leading-14 font-extrabold tracking-[-1.2px]">
             Meet international students &amp; teachers
           </h2>
-          <p className="mt-8 text-lg leading-7 text-slate-500">
+          <p className="text-text-secondary text-lg leading-7">
             Morbi sit egestas dignissim pharetra, sed amet. Tempus justo
             senectus risus ac vel, velit, nunc. Eget commodo eget in aliquam
             facilisi facilisi nec magna hendrerit. Placerat ipsum sit tellus
             urna, faucibus aenean lorem faucibus integer.
           </p>
           <Link
-            href="/people"
-            className="text-text-primary border-primary-blue-light mt-10 inline-flex h-13.5 items-center rounded-xl border px-7 text-base font-semibold transition-colors hover:bg-slate-50"
+            href="#"
+            className="border-card-border text-text-primary max-w-max rounded-lg border bg-white px-7 py-3.5 text-sm leading-6 font-bold"
           >
             Explore teachers and students
           </Link>
         </div>
-
         <PeopleCollage />
       </div>
     </Section>
@@ -593,23 +573,26 @@ function CtaSection() {
           ))}
         </div>
 
-        <h2 className="text-text-primary mt-10 text-4xl font-bold tracking-tight md:text-6xl">
+        <h2 className="text-text-primary mt-10 text-[56px] leading-16 font-extrabold tracking-[-1.4px]">
           What will you learn next?
         </h2>
-        <p className="mt-4 text-lg text-slate-500">
+        <p className="text-text-secondary mt-4 text-lg leading-7">
           Start with one course. Build from there.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/courses"
-            className="bg-primary-blue inline-flex h-13 items-center justify-center rounded-xl px-7 text-base font-semibold text-white transition-colors hover:bg-blue-700"
+            href="#"
+            className={buttonVariants({ className: "px-7 py-3.5" })}
           >
             Explore all courses
           </Link>
           <Link
-            href="/signup"
-            className="text-text-primary border-primary-blue-light inline-flex h-13 items-center justify-center rounded-xl border bg-white px-7 text-base font-semibold transition-colors hover:bg-slate-50"
+            href="#"
+            className={buttonVariants({
+              variant: "outline",
+              className: "px-7 py-3.5",
+            })}
           >
             Join Luma
           </Link>
@@ -641,10 +624,10 @@ const contactInfo: ContactInfo[] = [
 function ContactIntro() {
   return (
     <div className="max-w-120">
-      <p className="text-primary-blue text-xs font-semibold tracking-widest uppercase">
+      <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
         Contact
       </p>
-      <h2 className="text-text-primary mt-4 text-5xl font-extrabold tracking-tight">
+      <h2 className="text-text-primary mt-4 text-5xl font-extrabold tracking-[-1.2px]">
         Get in touch
       </h2>
       <p className="text-text-secondary mt-4 text-lg leading-7">
@@ -703,8 +686,8 @@ export default function Home() {
       <HowItWorks />
       <TestimonialStats />
       <PeopleSection />
-      <CtaSection />
       <ContactSection />
+      <CtaSection />
     </main>
   )
 }

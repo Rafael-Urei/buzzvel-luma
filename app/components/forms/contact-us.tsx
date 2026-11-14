@@ -12,7 +12,7 @@ export default function ContactUsForm() {
       <p className="text-text-secondary text-sm leading-6">
         Fill out the fields and we will get in touch.
       </p>
-      <Form action="/contact" className="space-y-5">
+      <Form action="/contact" className="space-y-5 pt-3">
         <fieldset className="flex flex-col gap-y-2">
           <label htmlFor="full-name">Full name</label>
           <Input id="full-name" placeholder="Your name"></Input>
@@ -28,7 +28,9 @@ export default function ContactUsForm() {
             placeholder="Tell us how we can help..."
           ></TextArea>
         </fieldset>
-        <Button>Send message</Button>
+        <Button className="w-full justify-center rounded-lg px-7 py-3.5 text-center text-sm leading-6 font-bold">
+          Send message
+        </Button>
       </Form>
     </div>
   )
