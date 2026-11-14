@@ -5,7 +5,7 @@ interface InputProps
   extends ComponentProps<"input">, VariantProps<typeof inputVariants> {}
 
 const inputVariants = tv({
-  base: "bg-background-light-yellow py-[12px] px-[16px] border rounded-md",
+  base: "bg-background-light-yellow py-[12px] px-[16px] border border-card-border rounded-md",
   variants: {
     variant: {
       default: "",

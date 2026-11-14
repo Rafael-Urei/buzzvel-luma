@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Header() {
   return (
-    <header className="bg-background-light-yellow inline-flex h-17.5 w-full items-center justify-between border-b px-20">
+    <header className="bg-background-light-yellow border-card-border inline-flex h-17.5 w-full items-center justify-between border-b px-20">
       <h1>
         <img src="./luma..svg" alt="luma." />
       </h1>

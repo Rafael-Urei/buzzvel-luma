@@ -5,7 +5,7 @@ import TextArea from "./textarea"
 
 export default function ContactUsForm() {
   return (
-    <div className="w-full max-w-135 space-y-2 rounded-lg border p-10">
+    <div className="border-card-border w-full max-w-135 space-y-2 rounded-2xl border p-10">
       <h3 className="text-xl leading-8 font-bold tracking-normal">
         Contact us
       </h3>

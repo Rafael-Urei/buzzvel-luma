@@ -14,6 +14,7 @@
   --background-yellow: #fff1c2;
   --background-light-yellow: #f9f8f3;
   --background-darkblue: #171b2c;
+  --card-border: #dbdfeb;
 }
 
 @theme inline {
@@ -30,6 +31,7 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-white-secondary: var(--text-white-secondary);
   --color-text-white-tertiary: var(--text-white-tertiary);
+  --color-card-border: var(--card-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
