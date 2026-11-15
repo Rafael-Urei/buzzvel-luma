@@ -7,9 +7,9 @@ export interface Course {
 }
 
 const courseCardStyles = tv({
-  base: "flex flex-col justify-start rounded-2xl border p-[28px]",
+  base: "flex flex-col justify-start rounded-2xl border p-[24px] md:p-[28px]",
   slots: {
-    title: "text-text-primary text-lg font-bold",
+    title: "text-text-primary md:text-lg text-base font-bold",
     description: "text-tertiary pt-[12px] text-sm tracking-normal",
   },
 })

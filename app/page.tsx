@@ -10,7 +10,7 @@ const pct = (value: number, total: number) => `${(value / total) * 100}%`
 
 const sectionStyles = tv({
   slots: {
-    base: "py-25",
+    base: "md:py-25 py-15",
     container: "mx-auto w-full max-w-280 px-6 xl:px-0",
   },
   variants: {
@@ -91,20 +91,20 @@ function CourseCard({ card }: { card: Course }) {
 function Hero() {
   return (
     <Section background="yellow">
-      <div className="flex flex-col-reverse items-center gap-y-8 sm:flex-row">
+      <div className="flex flex-col-reverse items-center gap-y-8 md:flex-row">
         <div className="max-w-140">
           <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
             Learn at your own pace
           </span>
-          <h1 className="font-jakarta pt-4 text-[65px] leading-17.5 font-extrabold tracking-[-1.6px]">
+          <h1 className="font-jakarta pt-4 text-[40px] leading-11 font-extrabold tracking-[-1.6px] md:text-[65px] md:leading-17.5">
             Build skills that actually move you forward.
           </h1>
-          <p className="text-text-secondary pt-6 text-lg leading-7 tracking-normal">
+          <p className="text-text-secondary pt-6 text-base leading-6.5 tracking-normal md:text-lg md:leading-7">
             Practical courses taught by people who do the work every day. Learn
             design, technology, business and more — one focused lesson at a
             time.
           </p>
-          <div className="flex flex-col gap-4 pt-8 sm:flex-row">
+          <div className="flex flex-col gap-4 pt-8 md:flex-row">
             <Button className="justify-center px-7 py-3.5 text-center">
               Explore courses
             </Button>
@@ -115,7 +115,7 @@ function Hero() {
               See how it works
             </Button>
           </div>
-          <div className="flex items-center justify-center gap-2 pt-8 sm:justify-start">
+          <div className="flex items-center justify-center gap-2 pt-8 md:justify-start">
             <Image
               src="/three-avatars.png"
               width={80}
@@ -166,14 +166,14 @@ function Courses() {
       <span className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
         Find your next skill
       </span>
-      <h2 className="text-text-primary font-jakarta max-w-140 pt-4 text-[48px] leading-14 font-extrabold tracking-[-1.2px]">
+      <h2 className="text-text-primary font-jakarta pt-4 text-[32px] leading-9 font-extrabold md:max-w-140 md:md:text-[48px] md:leading-14 md:tracking-[-1.2px]">
         Learn something worth knowing.
       </h2>
-      <p className="text-text-secondary max-w-140 pt-6 text-lg leading-7 tracking-normal">
+      <p className="text-text-secondary max-w-140 pt-6 text-base leading-6.5 tracking-normal md:text-lg md:leading-7">
         Short, practical courses designed around skills you can put to work
         immediately.
       </p>
-      <div className="grid grid-cols-1 gap-4 pt-10 sm:grid-cols-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 pt-10 md:grid-cols-2 md:grid-cols-4">
         {courses.map((course) => (
           <CourseCard key={course.id} card={course} />
         ))}
@@ -185,7 +185,7 @@ function Courses() {
 function FeaturedCourse() {
   return (
     <Section background="blue">
-      <div className="flex flex-col items-center gap-15 sm:flex-row">
+      <div className="flex flex-col items-center gap-15 md:flex-row">
         <div>
           <Image
             src="/featured-course.png"
@@ -198,15 +198,15 @@ function FeaturedCourse() {
           <span className="text-xs leading-4 font-semibold tracking-[1.44px] text-white uppercase">
             Most popular this month
           </span>
-          <h2 className="pt-4 text-[48px] leading-14 font-extrabold tracking-[-1.6px] text-white">
+          <h2 className="pt-4 text-[32px] leading-8 font-extrabold tracking-[-1.6px] text-white md:text-[48px] md:leading-14">
             Designing products people understand.
           </h2>
-          <p className="pt-6 leading-7 tracking-normal text-white">
+          <p className="pt-6 text-sm leading-6 tracking-normal text-white md:text-base md:leading-7">
             Learn how to turn complex workflows into simple, intentional product
             experiences through research, structure and thoughtful interaction
             design.
           </p>
-          <p className="pt-6 leading-7 tracking-normal text-white">
+          <p className="pt-6 text-sm leading-6 tracking-normal text-white md:text-base md:leading-7">
             with Maya Chen · Senior Product Designer
           </p>
           <div className="flex items-center gap-3 pt-6">
@@ -214,10 +214,10 @@ function FeaturedCourse() {
             <Button variant="badge">2h 40min</Button>
             <Button variant="badge">Intermediate</Button>
           </div>
-          <div className="flex flex-col items-center gap-3 pt-8 sm:flex-row">
+          <div className="flex flex-col items-center gap-3 pt-8 md:flex-row">
             <Button
               variant="secondary"
-              className="w-full justify-center px-7 py-3.5 text-center sm:w-max"
+              className="w-full justify-center px-7 py-3.5 text-center md:w-max"
             >
               View course
             </Button>
@@ -274,10 +274,10 @@ function HowItWorks() {
   return (
     <Section background="yellow">
       <div className="text-center">
-        <p className="text-primary-blue text-xs leading-4 font-medium font-semibold tracking-[1.44px] uppercase">
+        <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
           How Luma works
         </p>
-        <h2 className="text-text-primary mt-4 text-5xl leading-14 font-extrabold tracking-[-1.2px]">
+        <h2 className="text-text-primary mt-4 text-[36px] leading-9 font-extrabold tracking-[-0.8px] md:text-5xl md:leading-14 md:tracking-[-1.2px]">
           Less browsing. More learning.
         </h2>
       </div>
@@ -294,7 +294,7 @@ const testimonial = {
     "The lessons are short enough to fit into my week, but detailed enough that I actually leave with something I can use.",
   author: "Alex Morgan",
   role: "Product Manager",
-  avatar: "/avatars/alex-morgan.jpg",
+  avatar: "/img-alex-morgan.png",
 }
 
 const stats = [
@@ -306,7 +306,7 @@ const stats = [
 function TestimonialStats() {
   return (
     <Section>
-      <div className="flex flex-col items-center justify-between sm:flex-row">
+      <div className="flex flex-col items-center justify-between md:flex-row">
         <figure>
           <span
             aria-hidden
@@ -315,8 +315,8 @@ function TestimonialStats() {
             &quot;
           </span>
 
-          <blockquote className="mt-2">
-            <h4 className="text-text-primary max-w-150 text-3xl leading-11 font-semibold tracking-[-0.75px]">
+          <blockquote className="md:mt-2">
+            <h4 className="text-text-primary max-w-150 text-xl leading-8 font-semibold md:text-3xl md:leading-11 md:tracking-[-0.75px]">
               {testimonial.quote}
             </h4>
           </blockquote>
@@ -340,13 +340,13 @@ function TestimonialStats() {
           </figcaption>
         </figure>
 
-        <dl className="border-primary-blue-light flex w-100 flex-row gap-4 pt-12 sm:flex-col md:border-t-0 md:border-l md:pt-0 md:pl-12">
+        <dl className="border-primary-blue-light flex flex-row items-start gap-4 pt-12 md:w-100 md:flex-col md:border-t-0 md:border-l md:pt-0 md:pl-12">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse">
               <dt className="text-text-tertiary mt-2 text-sm leading-6 tracking-normal">
                 {stat.label}
               </dt>
-              <dd className="text-primary-blue font-jakarta text-[64px] leading-17.5 font-extrabold tracking-[-1.6px]">
+              <dd className="text-primary-blue font-jakarta text-[40px] leading-17.5 font-extrabold tracking-[-1.6px] md:text-[64px]">
                 {stat.value}
               </dd>
             </div>
@@ -458,17 +458,17 @@ function PeopleCollage() {
 function PeopleSection() {
   return (
     <Section background="yellow">
-      <div className="flex flex-col items-center gap-x-15 sm:flex-row">
+      <div className="flex flex-col items-center gap-x-15 md:flex-row">
         <div className="flex max-w-132.5 flex-col gap-8">
           <div>
             <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
               The people
             </p>
-            <h2 className="text-text-primary text-5xl leading-14 font-extrabold tracking-[-1.2px]">
+            <h2 className="text-text-primary text-[32px] leading-9 font-extrabold tracking-[-0.8px] md:text-5xl md:leading-14 md:tracking-[-1.2px]">
               Meet international students &amp; teachers
             </h2>
           </div>
-          <p className="text-text-secondary text-lg leading-7">
+          <p className="text-text-secondary text-base leading-6.5 md:text-lg md:leading-7">
             Morbi sit egestas dignissim pharetra, sed amet. Tempus justo
             senectus risus ac vel, velit, nunc. Eget commodo eget in aliquam
             facilisi facilisi nec magna hendrerit. Placerat ipsum sit tellus
@@ -489,12 +489,12 @@ function PeopleSection() {
 
 const CTA_CANVAS = { width: 1280, height: 470 }
 
-const avatars = [
-  "/avatars/01.jpg",
-  "/avatars/02.jpg",
-  "/avatars/03.jpg",
-  "/avatars/04.jpg",
-]
+// const avatars = [
+//   "/avatars/01.jpg",
+//   "/avatars/02.jpg",
+//   "/avatars/03.jpg",
+//   "/avatars/04.jpg",
+// ]
 
 const ring = "rounded-full border-2 border-orange-200"
 const outline = "border-2 border-orange-200"
@@ -575,31 +575,20 @@ function CtaSection() {
       <BackgroundShapes />
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center">
-        <div role="img" aria-label="Luma learners" className="flex -space-x-1">
-          {avatars.map((src) => (
-            <Image
-              key={src}
-              src={src}
-              alt=""
-              width={40}
-              height={40}
-              className="size-10 rounded-full border-2 border-yellow-200 object-cover"
-            />
-          ))}
-        </div>
+        <Image src="/four-avatars.png" alt="" width={1000} height={400} />
 
-        <h2 className="text-text-primary mt-10 text-[56px] leading-16 font-extrabold tracking-[-1.4px]">
+        <h2 className="text-text-primary mt-10 text-[36px] leading-10 font-extrabold tracking-[-0.9px] md:text-[56px] md:leading-16 md:tracking-[-1.4px]">
           What will you learn next?
         </h2>
-        <p className="text-text-secondary mt-4 text-lg leading-7">
+        <p className="text-text-secondary mt-4 text-base leading-7 md:text-lg">
           Start with one course. Build from there.
         </p>
 
-        <div className="mt-10 flex w-full flex-col gap-3 sm:flex-row">
+        <div className="mt-10 flex w-full flex-col gap-3 md:flex-row">
           <Link
             href="#"
             className={buttonVariants({
-              className: "w-full justify-center px-7 py-3.5 sm:max-w-max",
+              className: "w-full justify-center px-7 py-3.5 md:max-w-max",
             })}
           >
             Explore all courses
@@ -608,7 +597,7 @@ function CtaSection() {
             href="#"
             className={buttonVariants({
               variant: "outline",
-              className: "w-full justify-center px-7 py-3.5 sm:max-w-max",
+              className: "w-full justify-center px-7 py-3.5 md:max-w-max",
             })}
           >
             Join Luma
@@ -644,10 +633,10 @@ function ContactIntro() {
       <p className="text-primary-blue text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
         Contact
       </p>
-      <h2 className="text-text-primary mt-4 text-5xl font-extrabold tracking-[-1.2px]">
+      <h2 className="text-text-primary mt-4 text-[32px] font-extrabold tracking-[-0.8] not-md:leading-9 md:text-5xl md:tracking-[-1.2px]">
         Get in touch
       </h2>
-      <p className="text-text-secondary mt-4 text-lg leading-7">
+      <p className="text-text-secondary mt-4 text-sm leading-6 md:text-lg md:leading-7">
         Have a question? We’re here to help. Whether you’re looking for the
         right course, learning with your team or interested in teaching with
         Luma, we’d love to hear from you.
@@ -686,7 +675,7 @@ function ContactIntro() {
 function ContactSection() {
   return (
     <Section>
-      <div className="flex flex-col items-center justify-between gap-8 sm:flex-row sm:gap-0">
+      <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:gap-0">
         <ContactIntro />
         <ContactUsForm />
       </div>

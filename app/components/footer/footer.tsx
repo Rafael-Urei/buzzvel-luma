@@ -33,15 +33,15 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-400">
       <div className="mx-auto w-full max-w-280 px-6 pt-16 md:px-0">
-        <div className="grid gap-12 md:grid-cols-[1.9fr_1fr_1fr_1fr] md:gap-0">
-          <div>
+        <div className="grid grid-cols-2 gap-12 md:grid-cols-[1.9fr_1fr_1fr_1fr] md:gap-0">
+          <div className="not-md:col-span-2">
             <Link
               href="#"
               className="text-xl font-semibold tracking-tight text-white"
             >
               luma.
             </Link>
-            <p className="mt-3 max-w-55 text-sm leading-6">
+            <p className="mt-3 text-sm leading-6 md:max-w-55">
               Practical learning for curious people.
             </p>
           </div>
@@ -68,7 +68,7 @@ export function Footer() {
         </div>
 
         <div className="border-text-secondary mt-14 border-t py-8">
-          <p className="text-text-white-secondary text-[13px] leading-[19.5px]">
+          <p className="md:text-text-white-secondary text-[13px] leading-[19.5px] text-white not-md:text-center">
             &copy; 2026 Luma Learning
           </p>
         </div>

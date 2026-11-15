@@ -4,8 +4,9 @@ const sectionHeaderStyles = tv({
   slots: {
     base: "flex flex-col",
     eyebrow: "text-xs leading-4 font-semibold tracking-[1.44px] uppercase",
-    title: "pt-4 text-[48px] leading-17.5 font-extrabold tracking-[-1.6px]",
-    description: "max-w-xl pt-6 text-lg leading-7",
+    title:
+      "pt-4 md:text-[48px] text-[32px] leading-17.5 font-extrabold tracking-[-1.6px]",
+    description: "max-w-xl pt-6 md:text-lg text-base leading-7",
   },
   variants: {
     align: {
