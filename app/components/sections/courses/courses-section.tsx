@@ -95,7 +95,7 @@ export default function FeaturedCourse() {
             src="/featured-course.png"
             width={540}
             height={410}
-            alt=""
+            alt="Featured Course"
           ></Image>
         </div>
         <div className="max-w-135">

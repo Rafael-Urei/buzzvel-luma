@@ -3,7 +3,14 @@ import { Section } from "../../section/section"
 import Link from "next/link"
 
 function PeopleCollage() {
-  return <Image src="/students.png" alt="" width={530} height={525}></Image>
+  return (
+    <Image
+      src="/students.png"
+      alt="Students panel"
+      width={530}
+      height={525}
+    ></Image>
+  )
 }
 
 export default function PeopleSection() {

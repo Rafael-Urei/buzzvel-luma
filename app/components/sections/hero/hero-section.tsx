@@ -34,7 +34,7 @@ export default function Hero() {
               src="/three-avatars.png"
               width={80}
               height={32}
-              alt=""
+              alt="Three people avatars, a woman and two men."
             ></Image>
             <p className="text-sm">
               <strong>Trusted by 24,000+</strong> learners

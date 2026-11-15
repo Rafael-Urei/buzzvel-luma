@@ -11,6 +11,7 @@ interface Shape {
   rotate?: number
   src?: string
   className?: string
+  alt?: string
 }
 
 const pct = (value: number, total: number) => `${(value / total) * 100}%`
@@ -18,16 +19,31 @@ const CTA_CANVAS = { width: 1280, height: 469.5 }
 const fill = "bg-background-orange"
 
 const shapes: Shape[] = [
-  { src: "/shapes/empty-circle.svg", x: 22, y: 16.06, w: 108, h: 108 },
+  {
+    src: "/shapes/empty-circle.svg",
+    alt: "Empty circle",
+    x: 22,
+    y: 16.06,
+    w: 108,
+    h: 108,
+  },
   {
     src: "/shapes/empty-square.svg",
+    alt: "Empty square",
     x: 317,
     y: 42.37,
     w: 56,
     h: 56,
     rotate: 12,
   },
-  { src: "/shapes/empty-circle.svg", x: 877, y: 43.06, w: 32, h: 32 },
+  {
+    src: "/shapes/empty-circle.svg",
+    alt: "Empty circle",
+    x: 877,
+    y: 43.06,
+    w: 32,
+    h: 32,
+  },
   {
     className: `${fill} rounded-lg`,
     x: 1144,
@@ -44,14 +60,71 @@ const shapes: Shape[] = [
     h: 56,
     rotate: 12,
   },
-  { src: "/shapes/chat-filled.svg", x: 141, y: 214.06, w: 32, h: 32 },
-  { src: "/shapes/filled-circle.svg", x: 56, y: 373.06, w: 120, h: 120 },
-  { src: "/shapes/filled-circle.svg", x: 1064, y: 468.37, w: 40, h: 40 },
-  { src: "/shapes/b.svg", x: 272, y: 360.06, w: 82.56, h: 82.56, rotate: 15 },
-  { src: "/shapes/cube.svg", x: 1120, y: 220.37, w: 80, h: 80 },
-  { src: "/shapes/water-drop.svg", x: 1016, y: 82.06, w: 61.38, h: 61.38 },
-  { src: "/shapes/money.svg", x: 963, y: 381.06, w: 48, h: 48 },
-  { src: "/shapes/empty-circle.svg", x: 1208, y: 429.09, w: 32, h: 32 },
+  {
+    src: "/shapes/chat-filled.svg",
+    alt: "Filled chat icon",
+    x: 141,
+    y: 214.06,
+    w: 32,
+    h: 32,
+  },
+  {
+    src: "/shapes/filled-circle.svg",
+    alt: "Filled circle icon",
+    x: 56,
+    y: 373.06,
+    w: 120,
+    h: 120,
+  },
+  {
+    src: "/shapes/filled-circle.svg",
+    alt: "Filled circle icon",
+    x: 1064,
+    y: 468.37,
+    w: 40,
+    h: 40,
+  },
+  {
+    src: "/shapes/b.svg",
+    alt: "B shape icon",
+    x: 272,
+    y: 360.06,
+    w: 82.56,
+    h: 82.56,
+    rotate: 15,
+  },
+  {
+    src: "/shapes/cube.svg",
+    alt: "Cube shape icon",
+    x: 1120,
+    y: 220.37,
+    w: 80,
+    h: 80,
+  },
+  {
+    src: "/shapes/water-drop.svg",
+    alt: "Water drop icon",
+    x: 1016,
+    y: 82.06,
+    w: 61.38,
+    h: 61.38,
+  },
+  {
+    src: "/shapes/money.svg",
+    alt: "Money shape icon",
+    x: 963,
+    y: 381.06,
+    w: 48,
+    h: 48,
+  },
+  {
+    src: "/shapes/empty-circle.svg",
+    alt: "Empty circle icon",
+    x: 1208,
+    y: 429.09,
+    w: 32,
+    h: 32,
+  },
 ]
 
 function BackgroundShapes() {
@@ -73,7 +146,7 @@ function BackgroundShapes() {
           <Image
             key={index}
             src={shape.src}
-            alt=""
+            alt={shape.alt ?? ""}
             width={Math.round(shape.w)}
             height={Math.round(shape.h)}
             unoptimized
@@ -101,7 +174,12 @@ export default function CtaSection() {
       <BackgroundShapes />
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center">
-        <Image src="/four-avatars.png" alt="" width={1000} height={400} />
+        <Image
+          src="/four-avatars.png"
+          alt="Four people avatars"
+          width={1000}
+          height={400}
+        />
 
         <h2 className="text-text-primary mt-10 text-[36px] leading-10 font-extrabold tracking-[-0.9px] md:text-[56px] md:leading-16 md:tracking-[-1.4px]">
           What will you learn next?

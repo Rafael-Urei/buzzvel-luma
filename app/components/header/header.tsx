@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="bg-background-light-yellow border-card-border sticky top-0 z-20 inline-flex h-17.5 w-full items-center justify-between border-b px-6 md:px-20">
       <h1>
-        <img src="./luma..svg" alt="luma." />
+        <Image src="./luma..svg" alt="luma." width={54} height={17}></Image>
       </h1>
       <nav className="hidden items-center justify-center md:inline-flex">
         <Link href="#courses" className={buttonVariants({ variant: "ghost" })}>
