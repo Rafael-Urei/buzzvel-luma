@@ -68,21 +68,7 @@ function CourseCard({ card }: { card: Course }) {
       <p className={description()}>{card.description}</p>
       <div className="inline-flex items-center gap-2 justify-self-end pt-6 text-sm leading-6 font-bold tracking-normal">
         Explore
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 10H16M11 15L16 10L11 5"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke="#171B2C"
-          />
-        </svg>
+        <Image src="/icons/arrow.svg" alt="Menu Icon" width={20} height={20} />
       </div>
     </div>
   )
@@ -282,7 +268,7 @@ function HowItWorks() {
         </h2>
       </div>
 
-      <div className="mt-20">
+      <div className="mt-10 md:mt-20">
         <Stepper steps={steps} />
       </div>
     </Section>
@@ -308,14 +294,11 @@ function TestimonialStats() {
     <Section>
       <div className="flex flex-col items-center justify-between md:flex-row">
         <figure>
-          <span
-            aria-hidden
-            className="text-primary-blue block text-6xl leading-none font-bold"
-          >
-            &quot;
+          <span aria-hidden>
+            <Image src="/icons/quote.svg" alt="Luma" width={24} height={22} />
           </span>
 
-          <blockquote className="md:mt-2">
+          <blockquote className="mt-2">
             <h4 className="text-text-primary max-w-150 text-xl leading-8 font-semibold md:text-3xl md:leading-11 md:tracking-[-0.75px]">
               {testimonial.quote}
             </h4>
@@ -487,60 +470,54 @@ function PeopleSection() {
   )
 }
 
-const CTA_CANVAS = { width: 1280, height: 470 }
-
-// const avatars = [
-//   "/avatars/01.jpg",
-//   "/avatars/02.jpg",
-//   "/avatars/03.jpg",
-//   "/avatars/04.jpg",
-// ]
-
-const ring = "rounded-full border-2 border-orange-200"
-const outline = "border-2 border-orange-200"
-const fill = "bg-orange-200"
+const CTA_CANVAS = { width: 1280, height: 469.5 }
+const fill = "bg-background-orange"
 
 interface Shape {
   x: number
   y: number
   w: number
   h: number
-  className: string
   rotate?: number
+  src?: string
+  className?: string
 }
 
 const shapes: Shape[] = [
-  { x: 22, y: 16, w: 107, h: 107, className: ring },
+  { src: "/shapes/empty-circle.svg", x: 22, y: 16.06, w: 108, h: 108 },
   {
-    x: 318,
-    y: 44,
-    w: 64,
-    h: 64,
-    className: `${outline} rounded-xl`,
+    src: "/shapes/empty-square.svg",
+    x: 317,
+    y: 42.37,
+    w: 56,
+    h: 56,
     rotate: 12,
   },
-  { x: 877, y: 43, w: 31, h: 31, className: ring },
+  { src: "/shapes/empty-circle.svg", x: 877, y: 43.06, w: 32, h: 32 },
   {
-    x: 1150,
-    y: -20,
-    w: 130,
-    h: 130,
-    className: `${fill} rounded-3xl`,
+    className: `${fill} rounded-lg`,
+    x: 1144,
+    y: -23.94,
+    w: 115.06,
+    h: 115.06,
     rotate: 12,
   },
   {
-    x: -15,
-    y: 235,
-    w: 60,
-    h: 60,
-    className: `${fill} rounded-xl`,
-    rotate: -12,
+    className: `${fill} rounded-lg`,
+    x: -33,
+    y: 230.06,
+    w: 56,
+    h: 56,
+    rotate: 12,
   },
-  { x: 143, y: 216, w: 28, h: 28, className: `${fill} rounded-full` },
-  { x: 56, y: 372, w: 120, h: 120, className: `${fill} rounded-full` },
-  { x: 302, y: 383, w: 32, h: 50, className: `${fill} rounded-lg`, rotate: 14 },
-  { x: 966, y: 390, w: 41, h: 29, className: `${outline} rounded-sm` },
-  { x: 1208, y: 429, w: 31, h: 31, className: ring },
+  { src: "/shapes/chat-filled.svg", x: 141, y: 214.06, w: 32, h: 32 },
+  { src: "/shapes/filled-circle.svg", x: 56, y: 373.06, w: 120, h: 120 },
+  { src: "/shapes/filled-circle.svg", x: 1064, y: 468.37, w: 40, h: 40 },
+  { src: "/shapes/b.svg", x: 272, y: 360.06, w: 82.56, h: 82.56, rotate: 15 },
+  { src: "/shapes/cube.svg", x: 1120, y: 220.37, w: 80, h: 80 },
+  { src: "/shapes/water-drop.svg", x: 1016, y: 82.06, w: 61.38, h: 61.38 },
+  { src: "/shapes/money.svg", x: 963, y: 381.06, w: 48, h: 48 },
+  { src: "/shapes/empty-circle.svg", x: 1208, y: 429.09, w: 32, h: 32 },
 ]
 
 function BackgroundShapes() {
@@ -549,19 +526,34 @@ function BackgroundShapes() {
       aria-hidden
       className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block"
     >
-      {shapes.map((shape, index) => (
-        <span
-          key={index}
-          className={`absolute ${shape.className}`}
-          style={{
-            left: pct(shape.x, CTA_CANVAS.width),
-            top: pct(shape.y, CTA_CANVAS.height),
-            width: shape.w,
-            height: shape.h,
-            transform: shape.rotate ? `rotate(${shape.rotate}deg)` : undefined,
-          }}
-        />
-      ))}
+      {shapes.map((shape, index) => {
+        const style = {
+          left: pct(shape.x, CTA_CANVAS.width),
+          top: pct(shape.y, CTA_CANVAS.height),
+          width: shape.w,
+          height: shape.h,
+          transform: shape.rotate ? `rotate(${shape.rotate}deg)` : undefined,
+        }
+
+        return shape.src ? (
+          <Image
+            key={index}
+            src={shape.src}
+            alt=""
+            width={Math.round(shape.w)}
+            height={Math.round(shape.h)}
+            unoptimized
+            className="absolute max-w-none"
+            style={style}
+          />
+        ) : (
+          <span
+            key={index}
+            className={`absolute ${shape.className}`}
+            style={style}
+          />
+        )
+      })}
     </div>
   )
 }
@@ -584,7 +576,7 @@ function CtaSection() {
           Start with one course. Build from there.
         </p>
 
-        <div className="mt-10 flex w-full flex-col gap-3 md:flex-row">
+        <div className="mt-10 flex w-full flex-col justify-center gap-3 text-center md:flex-row">
           <Link
             href="#"
             className={buttonVariants({
@@ -619,11 +611,13 @@ const contactInfo: ContactInfo[] = [
   {
     label: "Email",
     value: "contact@luma.com",
+    icon: "email",
     href: "mailto:contact@luma.com",
   },
   {
     label: "Response Time",
     value: "Up to 24 hours on business days",
+    icon: "clock",
   },
 ]
 
@@ -649,7 +643,14 @@ function ContactIntro() {
             className="flex items-center gap-4 rounded-2xl bg-stone-50 p-5"
           >
             <div className="bg-primary-blue-light text-primary-blue flex size-10 shrink-0 items-center justify-center rounded-lg">
-              {item.icon}
+              {item.icon && (
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt="Communication Icon"
+                  width={20}
+                  height={20}
+                ></Image>
+              )}
             </div>
 
             <div className="flex flex-col gap-1">
@@ -662,7 +663,7 @@ function ContactIntro() {
                   {item.value}
                 </a>
               ) : (
-                <span className="text-sm text-slate-500">{item.value}</span>
+                <span className="text-text-tertiary text-sm">{item.value}</span>
               )}
             </div>
           </li>

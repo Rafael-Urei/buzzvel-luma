@@ -28,7 +28,7 @@ function StepperItem({
       {!isLast && (
         <span
           aria-hidden
-          className="absolute top-7 -right-20 left-0 hidden h-px bg-slate-200 md:block"
+          className="absolute top-7 -right-20 left-0 hidden h-px bg-[#DBDFEB] md:block"
         />
       )}
 
@@ -37,7 +37,7 @@ function StepperItem({
       <p className="text-text-tertiary mt-6 text-xs leading-4 font-semibold tracking-[1.44px] uppercase">
         {label}
       </p>
-      <h3 className="mt-3 text-xl leading-8 font-bold tracking-normal text-slate-900">
+      <h3 className="text-text-primary mt-3 text-xl leading-8 font-bold tracking-normal">
         {title}
       </h3>
       <p className="text-text-secondary mt-4 max-w-xs text-base leading-7">
@@ -75,9 +75,9 @@ const stepShape = tv({
   },
   variants: {
     tone: {
-      blue: { base: "bg-blue-100", inner: "bg-blue-600" },
-      orange: { base: "bg-orange-200", inner: "bg-orange-500" },
-      yellow: { base: "bg-yellow-100", inner: "bg-yellow-400" },
+      blue: { base: "bg-primary-blue-light", inner: "bg-primary-blue" },
+      orange: { base: "bg-background-orange", inner: "bg-primary-orange" },
+      yellow: { base: "bg-background-yellow", inner: "bg-[#E9D659]" },
     },
     shape: {
       circle: {
@@ -86,7 +86,7 @@ const stepShape = tv({
       },
       tilted: {
         base: "rotate-[8deg] rounded-xl",
-        inner: "bottom-2 right-2 size-7 rounded-full",
+        inner: "bottom-2 right-0 size-7 rounded-full",
       },
       square: {
         base: "rounded-xl",

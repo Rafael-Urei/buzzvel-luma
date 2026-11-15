@@ -31,7 +31,7 @@ const linkGroups = [
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-400">
+    <footer className="bg-background-darkblue text-text-white-tertiary">
       <div className="mx-auto w-full max-w-280 px-6 pt-16 md:px-0">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-[1.9fr_1fr_1fr_1fr] md:gap-0">
           <div className="not-md:col-span-2">

@@ -15,6 +15,7 @@
   --background-yellow: #fff1c2;
   --background-light-yellow: #f9f8f3;
   --background-darkblue: #171b2c;
+  --background-orange: #ffcb9f;
   --card-border: #dbdfeb;
 }
 
@@ -28,6 +29,7 @@
   --color-background-yellow: var(--background-yellow);
   --color-background-light-yellow: var(--background-light-yellow);
   --color-background-darkblue: var(--background-darkblue);
+  --color-background-orange: var(--background-orange);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
